@@ -1,58 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Text Simplifier</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinguoPro</title>
   <style>
+ 
+  body {
+    font-family: Arial, sans-serif;
+    padding: 15px;
+    margin: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    width: 400px; /* Increase width here */
+    height: 600px; /* Adjust height if needed */
+    overflow-x: hidden; /* Prevent horizontal scrollbars */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds */
+  }
+
+  h3 {
+    text-align: center;
+    color: #007BFF;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  textarea, select, input, button {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  body::-webkit-scrollbar {
+      display: none;
+    } 
     body {
       font-family: Arial, sans-serif;
-      margin: 10px;
-      width: 300px;
+      padding: 15px;
+      margin: 0;
+      background-color: #f4f4f9;
+      color: #333;
     }
-    textarea {
-      width: 100%;
-      height: 100px;
-      margin-bottom: 10px;
+
+    h3 {
+      text-align: center;
+      color: #007BFF;
+      font-size: 20px;
+      margin-bottom: 20px;
     }
-    button {
+
+    textarea, select, input, button {
       width: 100%;
+      margin-bottom: 15px;
       padding: 10px;
-      background-color: #4caf50;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: none;
+      background-color: #f9f9f9;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      color: #555;
+    }
+
+    button {
+      background-color: #007BFF;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin-bottom: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
     }
+
     button:hover {
-      background-color: #45a049;
+      background-color: #0056b3;
     }
-    .summary {
+
+    #output {
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
       margin-top: 10px;
       font-size: 14px;
+      color: #333;
+      white-space: pre-wrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    label, select, input {
-      margin-bottom: 5px;
-      display: block;
+
+    /* Add a footer for branding */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 15px;
+    }
+
+    .footer a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h3>Text Simplifier</h3>
-  <textarea id="highlightedText" placeholder="Highlighted text will appear here..." readonly></textarea>
+  <h3>LinguoPro</h3>
+  <textarea id="inputText" placeholder="Highlighted text will appear here..." readonly></textarea>
   <button id="fetchTextBtn">Fetch Highlighted Text</button>
-  <label for="summaryType">Select Summary Type:</label>
-  <select id="summaryType">
-    <option value="key-points">Key Points</option>
-    <option value="tl;dr">Short Summary</option>
-    <option value="detailed">Detailed Summary</option>
+
+  <label for="summaryStyle">Summarization Style:</label>
+  <select id="summaryStyle">
+    <option value="concise">Concise</option>
+    <option value="detailed">Detailed</option>
+    <option value="creative">Creative</option>
   </select>
-  <button id="summarizeBtn">Simplify</button>
-  <label for="themeToggle">Dark Mode:</label>
-  <input type="checkbox" id="themeToggle" />
-  <div class="summary" id="summary"></div>
-  <button id="exportSummaryBtn">Export Summary</button>
+  <button id="summarizeBtn">Summarize</button>
+
+  <label for="targetLanguage">Translate To:</label>
+  <select id="targetLanguage">
+    <option value="es">Spanish</option>
+    <option value="fr">French</option>
+    <option value="de">German</option>
+  </select>
+  <button id="translateBtn">Translate</button>
+
+  <label for="customPrompt">Custom Prompt:</label>
+  <input id="customPrompt" placeholder="Enter a prompt for rewriting..." />
+  <button id="rewriteBtn">Apply Prompt</button>
+
+  <div id="output">Results will appear here...</div>
+
+  <div class="footer">
+    Powered by <a href="https://developer.chrome.com/docs/ai/" target="_blank">Chrome AI APIs</a>
+  </div>
+
   <script src="popup.js"></script>
 </body>
 </html>

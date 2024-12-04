@@ -1,18 +1,27 @@
 {
     "manifest_version": 3,
-    "name": "Text Simplifier",
-    "version": "1.0",
-    "description": "Simplify highlighted text using the Summarizer API.",
-    "permissions": ["activeTab", "scripting"],
+    "name": "Text Assistant",
+    "version": "1.1",
+    "description": "Summarize, translate, and rewrite highlighted text.",
+    "permissions": [
+      "scripting",
+      "activeTab",
+      "storage",
+      "aiLanguageModelOriginTrial"
+    ],
+    "trial_tokens": [
+      "Ai/+a6Dscj4Lor8uTQNHB4Gqj0cbie5Ue20Y+Uji8V8hjTkB+X6ana6dIF1mC0jJXCVawrQ173HHJMtxDiBI2AsAAAB4eyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8vaGlvZ25sbW5iZG9paWNiZGlnZm9ucGZwb2ljb2lqYWoiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElGb3JFeHRlbnNpb24iLCJleHBpcnkiOjE3NjA0ODYzOTl9",
+      "Aq2snIjcbrpoZyVAQeySPwMCcDlMjL5tXel73B9nhC5QKk3gosoOLipxPGPL6ESAl9+/NGttDkxXTWke0jcU9QAAAABveyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8vaGlvZ25sbW5iZG9paWNiZGlnZm9ucGZwb2ljb2lqYWoiLCJmZWF0dXJlIjoiVHJhbnNsYXRpb25BUEkiLCJleHBpcnkiOjE3NTMxNDI0MDB9"
+    ],
     "host_permissions": ["<all_urls>"],
     "action": {
-      "default_popup": "popup.html"
-    },
-    "content_scripts": [
-      {
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-      }
-    ]
+  "default_popup": "popup.html",
+  "default_popup_height": 600,
+  "default_popup_width": 400
+},
+
+    "background": {
+      "service_worker": "background.js"
+    }
   }
   
